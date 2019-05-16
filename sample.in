@@ -3,7 +3,7 @@ entry class Sample2 :
         var a = 2;
         begin
             var a = _a && true;
-            a = b || c && 2;
+            a = self || c && 2;
             var _a = false;
             var b = _a && true;
             var c = 1;

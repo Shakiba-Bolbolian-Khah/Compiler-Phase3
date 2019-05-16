@@ -43,16 +43,20 @@ public class TypeChecker implements Visitor<Type> {
 
     private boolean isLvalue;
     private boolean isInWhile;
+    private boolean hasError;
 
     private String currentClassName;
 
     public TypeChecker(Graph<String> inheritenceGraph_){
         isLvalue = false;
         isInWhile = false;
+        hasError = false;
         inheritenceGraph = inheritenceGraph_;
     }
 
-
+    public boolean HasError() {
+        return hasError;
+    }
 
     public boolean isSubType(Type child, Type parent){
 
@@ -73,8 +77,10 @@ public class TypeChecker implements Visitor<Type> {
     public Type visit(PrintLine printStat) {
         Type printType = printStat.getArg().accept(this);
         if(!(printType.toString().equals("(UndefinedType)") || printType.toString().equals("(IntType)")
-                || printType.toString().equals("(StringType)") || printType.toString().equals("(ArrayType,(IntType))")))
-            System.out.println("Error:Line:" + printStat.line + ":Type of parameter of print built-in function must be integer , string or array of integer;" );
+                || printType.toString().equals("(StringType)") || printType.toString().equals("(ArrayType,(IntType))"))) {
+            System.out.println("Error:Line:" + printStat.line + ":Type of parameter of print built-in function must be integer , string or array of integer;");
+            hasError = true;
+        }
 
         return null;
     }
@@ -84,24 +90,28 @@ public class TypeChecker implements Visitor<Type> {
         isLvalue = false;
         Type lhs = assignStat.getLvalue().accept(this);
 
-        if(!isLvalue && !lhs.toString().equals("(UndefinedType)"))
+        if(!isLvalue && !lhs.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + assignStat.line + ":Left hand side expression is not assignable;");
+            hasError = true;
+        }
 
         Type rhs = assignStat.getRvalue().accept(this);
 
-//        if (rhs.toString().startsWith("(UserDefinedType") && lhs.toString().startsWith("(UserDefinedType")){
-//            if(!inheritenceGraph.doesGraphContainNode(((UserDefinedType) rhs).getClassName())){
-//                System.out.println("Error:Line:" + assignStat.line+":;");
-//                rhs = new UndefinedType();
-//            }
-//            if(!inheritenceGraph.doesGraphContainNode(((UserDefinedType) lhs).getClassName())){
-//                System.out.println("Error:Line:" + assignStat.line+":;");
-//                lhs = new UndefinedType();
-//            }
-//        }
+        if(rhs.toString().startsWith("(UserDefinedType") && !inheritenceGraph.doesGraphContainNode(((UserDefinedType) rhs).getClassName())){
+            System.out.println("Error:Line:" + assignStat.line+":There is no class with name " + ((UserDefinedType) rhs).getClassName() +";");
+            rhs = new UndefinedType();
+            hasError = true;
+        }
+        if(lhs.toString().startsWith("(UserDefinedType") && !inheritenceGraph.doesGraphContainNode(((UserDefinedType) lhs).getClassName())){
+            System.out.println("Error:Line:" + assignStat.line+":There is no class with name " + ((UserDefinedType) lhs).getClassName() +";");
+            lhs = new UndefinedType();
+            hasError = true;
+        }
 
-        if (!isSubType(rhs,lhs))
+        if (!isSubType(rhs,lhs)) {
             System.out.println("Error:Line:" + assignStat.line + ":Type " + rhs.toString() + " can not be assigned to type " + lhs.toString() + ";");
+            hasError = true;
+        }
 
 
         isLvalue = false;
@@ -125,8 +135,10 @@ public class TypeChecker implements Visitor<Type> {
     @Override
     public Type visit(Conditional conditional) {
         Type condType = conditional.getCondition().accept(this);
-        if(!condType.toString().equals("(BoolType)") && !condType.toString().equals("(UndefinedType)"))
+        if(!condType.toString().equals("(BoolType)") && !condType.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + conditional.getCondition().line + ":Condition type must be bool in Conditional statements;");
+            hasError = true;
+        }
 
         SymbolTable.push(new SymbolTable(SymbolTable.top()));
         conditional.getThenStatement().accept(this);
@@ -143,8 +155,10 @@ public class TypeChecker implements Visitor<Type> {
     public Type visit(While whileStat) {
 
         Type condType = whileStat.expr.accept(this);
-        if(!condType.toString().equals("(BoolType)") && !condType.toString().equals("(UndefinedType)"))
+        if(!condType.toString().equals("(BoolType)") && !condType.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + whileStat.expr.line + ":Condition type must be bool in Loop statements;");
+            hasError = true;
+        }
 
         SymbolTable.push(new SymbolTable(SymbolTable.top()));
         isInWhile = true;
@@ -166,17 +180,18 @@ public class TypeChecker implements Visitor<Type> {
             methodRetType = item.getVarType();
         }
         catch (ItemNotFoundException e){
-            System.out.println("here");
         }
-//        if (retType.toString().startsWith("(UserDefinedType")){
-//            if(!inheritenceGraph.doesGraphContainNode(((UserDefinedType) retType).getClassName())){
-//                System.out.println("Error:Line:" + returnStat.line+":;");
-//                retType = new UndefinedType();
-//            }
-//        }
 
-        if(!isSubType(retType,methodRetType))
-            System.out.println("Error:Line:" + returnStat.line + ":Expression returned by this method must be " + methodRetType.toString() +";");
+        if(retType.toString().startsWith("(UserDefinedType") && !inheritenceGraph.doesGraphContainNode(((UserDefinedType) retType).getClassName())){
+            System.out.println("Error:Line:" + returnStat.line+":There is no class with name " + ((UserDefinedType) retType).getClassName() +";");
+            retType = new UndefinedType();
+            hasError = true;
+        }
+
+        if(!isSubType(retType,methodRetType)) {
+            System.out.println("Error:Line:" + returnStat.line + ":Expression returned by this method must be " + methodRetType.toString() + ";");
+            hasError = true;
+        }
 
         return null;
     }
@@ -184,8 +199,10 @@ public class TypeChecker implements Visitor<Type> {
     @Override
     public Type visit(Break breakStat) {
 
-        if(!isInWhile)
+        if(!isInWhile) {
             System.out.println("Error:Line:" + breakStat.line + ":Invalid use of Break, Break must be used as loop statement;");
+            hasError = true;
+        }
 
         return null;
     }
@@ -193,8 +210,10 @@ public class TypeChecker implements Visitor<Type> {
     @Override
     public Type visit(Continue continueStat) {
 
-        if(!isInWhile)
+        if(!isInWhile) {
             System.out.println("Error:Line:" + continueStat.line + ":Invalid use of Continue, Continue must be used as loop statement;");
+            hasError = true;
+        }
 
         return null;
     }
@@ -224,10 +243,14 @@ public class TypeChecker implements Visitor<Type> {
         isLvalue = false;
         Type hsType = incStatement.getOperand().accept(this);
 
-        if(!isLvalue && !hsType.toString().equals("(UndefinedType)"))
+        if(!isLvalue && !hsType.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + incStatement.line + ":Operand of Inc must be a valid lvalue;");
-        if(!hsType.toString().equals("(IntType)") && !hsType.toString().equals("(UndefinedType)"))
+            hasError = true;
+        }
+        if(!hsType.toString().equals("(IntType)") && !hsType.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + incStatement.line + ":Unsupported operand types for " + incStatement.toString() + ";");
+            hasError = true;
+        }
 
         isLvalue = false;
         return null;
@@ -237,10 +260,14 @@ public class TypeChecker implements Visitor<Type> {
     public Type visit(DecStatement decStatement) {
         isLvalue = false;
         Type hsType = decStatement.getOperand().accept(this);
-        if(!isLvalue && !hsType.toString().equals("(UndefinedType)"))
+        if(!isLvalue && !hsType.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + decStatement.line + ":Operand of Dec must be a valid lvalue;");
-        if(!hsType.toString().equals("(IntType)") && !hsType.toString().equals("(UndefinedType)"))
+            hasError = true;
+        }
+        if(!hsType.toString().equals("(IntType)") && !hsType.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + decStatement.line + ":Unsupported operand types for " + decStatement.toString() + ";");
+            hasError = true;
+        }
 
         isLvalue = false;
         return null;
@@ -255,6 +282,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(IntType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + plusExpr.line + ":Unsupported operand types for " + plusExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -272,6 +300,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(IntType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + minusExpr.line + ":Unsupported operand types for " + minusExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
         isLvalue = false;
@@ -288,6 +317,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(IntType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + timesExpr.line + ":Unsupported operand types for " + timesExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -304,6 +334,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(IntType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + divExpr.line + ":Unsupported operand types for " + divExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -320,6 +351,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(IntType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + moduloExpr.line + ":Unsupported operand types for " + moduloExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -339,6 +371,7 @@ public class TypeChecker implements Visitor<Type> {
 
         System.out.println("Error:Line:" + equalsExpr.line + ":Unsupported operand types for " + equalsExpr.toString() + ";");
         isLvalue = false;
+        hasError = true;
         return new UndefinedType();
     }
 
@@ -351,6 +384,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(IntType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + gtExpr.line + ":Unsupported operand types for " + gtExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -367,6 +401,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(IntType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + lessThanExpr.line + ":Unsupported operand types for " + lessThanExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -383,6 +418,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(BoolType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + andExpr.line + ":Unsupported operand types for " + andExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -399,6 +435,7 @@ public class TypeChecker implements Visitor<Type> {
                 (!rhsType.toString().equals("(BoolType)") && !rhsType.toString().equals("(UndefinedType)"))) {
             System.out.println("Error:Line:" + orExpr.line + ":Unsupported operand types for " + orExpr.toString() + ";");
             isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -417,6 +454,7 @@ public class TypeChecker implements Visitor<Type> {
 
         System.out.println("Error:Line:" + negExpr.line + ":Unsupported operand types for " + negExpr.toString() + ";");
         isLvalue = false;
+        hasError = true;
         return new UndefinedType();
     }
 
@@ -431,6 +469,7 @@ public class TypeChecker implements Visitor<Type> {
 
         System.out.println("Error:Line:" + notExpr.line + ":Unsupported operand types for " + notExpr.toString() + ";");
         isLvalue = false;
+        hasError = true;
         return new UndefinedType();
     }
 
@@ -447,11 +486,14 @@ public class TypeChecker implements Visitor<Type> {
         Type instanceType = methodCall.getInstance().accept(this);
 
         if(!instanceType.toString().startsWith("(UserDefined") && !isSelf && !instanceType.toString().equals("(UndefinedType)")) {
-            System.out.println("Error:Line:" + methodCall.line + ":There is no class with name " + "" +";");//TODO
+            System.out.println("Error:Line:" + methodCall.line + ":Unsupported operand types for " + methodCall.toString() + ";");
+            hasError = true;
+            isLvalue = false;
             return new UndefinedType();
         }
 
         if(!isSelf && instanceType.toString().equals("(UndefinedType)")) {
+            isLvalue = false;
             return new UndefinedType();
         }
 
@@ -482,40 +524,49 @@ public class TypeChecker implements Visitor<Type> {
                 if(instanceType.toString().startsWith("(UserDefined")) {
                     System.out.println("Error:Line:" + methodCall.line + ":There is no method with name " + methodCall.getMethodName().getName() +
                             " with such parameters in class " + ((UserDefinedType) instanceType).getClassName() +";");
+                    hasError = true;
                 }
                 else{
                     System.out.println("Error:Line:" + methodCall.line + ":There is no method with name " + methodCall.getMethodName().getName() +
                             " with such parameters in class " + currentClassName +";");
+                    hasError = true;
                 }
+                isLvalue = false;
                 return new UndefinedType();
             }
 
             for(int i = 0; i < argTypes.size(); i++){
-//                if (argTypes.get(i).toString().startsWith("(UserDefinedType")){
-//                    if(!inheritenceGraph.doesGraphContainNode(((UserDefinedType) argTypes.get(i)).getClassName())) {
-//                        System.out.println("Error:Line:" + methodCall.line+":;");
-//                        return new UndefinedType();
-//                    }
-//                }
+                if(argTypes.get(i).toString().startsWith("(UserDefinedType") &&!inheritenceGraph.doesGraphContainNode(((UserDefinedType) argTypes.get(i)).getClassName())) {
+                    System.out.println("Error:Line:" + methodCall.line+":There is no class with name " + ((UserDefinedType) argTypes.get(i)).getClassName() + ";");
+                    isLvalue = false;
+                    hasError = true;
+                    return new UndefinedType();
+                }
 
                 if(!isSubType(argTypes.get(i),orgArgTypes.get(i))){
                     if(instanceType.toString().startsWith("(UserDefined")) {
                         System.out.println("Error:Line:" + methodCall.line + ":There is no method with name " + methodCall.getMethodName().getName() +
                                 " with such parameters in class " + ((UserDefinedType) instanceType).getClassName() +";");
+                        hasError = true;
                     }
                     else{
                         System.out.println("Error:Line:" + methodCall.line + ":There is no method with name " + methodCall.getMethodName().getName() +
                                 " with such parameters in class " + currentClassName +";");
+                        hasError = true;
                     }
+                    isLvalue = false;
                     return new UndefinedType();
                 }
             }
 
             if(!isSelf && methodItem.getAccessModifier().equals(ACCESS_MODIFIER_PRIVATE)){
                 System.out.println("Error:Line:" + methodCall.line + ":Illegal access to Method " + methodCall.getMethodName().getName() + "of an object of Class" + ((UserDefinedType) instanceType).getClassName() + ";");
+                isLvalue = false;
+                hasError = true;
                 return new UndefinedType();
             }
 
+            isLvalue = false;
             return methodItem.getReturnType();
 
         }
@@ -523,11 +574,14 @@ public class TypeChecker implements Visitor<Type> {
             if(instanceType.toString().startsWith("(UserDefined")) {
                 System.out.println("Error:Line:" + methodCall.line + ":There is no method with name " + methodCall.getMethodName().getName() +
                         " with such parameters in class " + ((UserDefinedType) instanceType).getClassName() +";");
+                hasError = true;
             }
             else{
                 System.out.println("Error:Line:" + methodCall.line + ":There is no method with name " + methodCall.getMethodName().getName() +
                         " with such parameters in class " + currentClassName +";");
+                hasError = true;
             }
+            isLvalue = false;
             return new UndefinedType();
         }
     }
@@ -541,17 +595,20 @@ public class TypeChecker implements Visitor<Type> {
         }
         catch (ItemNotFoundException e){
             System.out.println("Error:Line:" + identifier.line + ":Variable " + identifier.getName() + " is not declared yet in this Scope;");
+            hasError = true;
             return new UndefinedType();
         }
     }
 
     @Override
     public Type visit(Self self) {
-        return new UndefinedType();
+        isLvalue = false;
+        return new UserDefinedType(new ClassDeclaration(new Identifier(currentClassName)));
     }
 
     @Override
     public Type visit(IntValue intValue) {
+        isLvalue = false;
         return new IntType();
     }
 
@@ -561,6 +618,7 @@ public class TypeChecker implements Visitor<Type> {
 
         Type indexType = newArray.getLength().accept(this);
         if(!indexType.toString().equals("(IntType)") && !indexType.toString().equals("(UndefinedType)")) {
+            hasError = true;
             System.out.println("Error:Line:" + newArray.line + ":Size of an array must be of type integer;");
         }
         if( arrayType.toString().startsWith("(UserDefined")) {
@@ -568,20 +626,25 @@ public class TypeChecker implements Visitor<Type> {
                 SymbolTable.root.get("class_" + arrayType.getClass().getName());
             } catch (ItemNotFoundException e) {
                 System.out.println("Error:Line:" + newArray.line + ":There is no class with name "+ ((UserDefinedType) arrayType).getClassName() +";");//TODO
+                hasError = true;
+                isLvalue = false;
                 return new UndefinedType();
             }
         }
 
+        isLvalue = false;
         return new ArrayType(arrayType);
     }
 
     @Override
     public Type visit(BoolValue booleanValue) {
+        isLvalue = false;
         return new BoolType();
     }
 
     @Override
     public Type visit(StringValue stringValue) {
+        isLvalue = false;
         return new StringType();
     }
 
@@ -590,10 +653,13 @@ public class TypeChecker implements Visitor<Type> {
 
         try {
             SymbolTableItem item = SymbolTable.root.get("class_" + newClassInstance.getClassName().getName());
+            isLvalue = false;
             return new UserDefinedType(new ClassDeclaration(new Identifier(item.getName())));
         }
         catch (ItemNotFoundException e){
             System.out.println("Error:Line:" + newClassInstance.line + ":There is no class with name " + newClassInstance.getClassName().getName() +";");
+            isLvalue = false;
+            hasError = true;
             return new UndefinedType();
         }
 
@@ -611,11 +677,12 @@ public class TypeChecker implements Visitor<Type> {
         Type instanceType = fieldCall.getInstance().accept(this);
 
         if(instanceType.toString().startsWith("(ArrayType") && fieldCall.getField().getName().equals("length")){
+            System.out.println("Error:Line:" + fieldCall.line + ":Unsupported operand types for " + fieldCall.toString() + ";");//TODO
+            hasError = true;
             return new IntType();
         }
 
         if(!instanceType.toString().startsWith("(UserDefined") && !isSelf && !instanceType.toString().equals("(UndefinedType)")) {
-            System.out.println("Error:Line:" + fieldCall.line + ":There is no class with name <ClassName>;");//TODO
             return new UndefinedType();
         }
 
@@ -643,6 +710,7 @@ public class TypeChecker implements Visitor<Type> {
             if(!isSelf && fieldItem.getAccessModifier().equals(ACCESS_MODIFIER_PRIVATE)){
                 System.out.println("Error:Line:" + fieldCall.line + ":Illegal access to Field " + fieldCall.getField().getName() +
                         " of an object of Class " + ((UserDefinedType) instanceType).getClassName() +";");
+                hasError = true;
                 return new UndefinedType();
             }
 
@@ -654,10 +722,12 @@ public class TypeChecker implements Visitor<Type> {
             if(instanceType.toString().startsWith("(UserDefined")) {
                 System.out.println("Error:Line:" + fieldCall.line + ":There is no Field with name " + fieldCall.getField().getName() +
                         " with in class " + ((UserDefinedType) instanceType).getClassName() + ";");
+                hasError = true;
             }
             else {
                 System.out.println("Error:Line:" + fieldCall.line + ":There is no Field with name " + fieldCall.getField().getName() +
                         " with in class " + currentClassName + ";");
+                hasError = true;
             }
             return new UndefinedType();
         }
@@ -671,13 +741,19 @@ public class TypeChecker implements Visitor<Type> {
         Type indexType = arrayCall.getIndex().accept(this);
         Type arrayType = arrayCall.getInstance().accept(this);
 
-        if(!indexType.toString().equals("(IntType)") && !indexType.toString().equals("(UndefinedType)"))
+        if(!indexType.toString().equals("(IntType)") && !indexType.toString().equals("(UndefinedType)")) {
             System.out.println("Error:Line:" + arrayCall.line + ":Index of an array must be of type integer;");
+            hasError = true;
+        }
 
         if(!arrayType.toString().startsWith("(ArrayType,") && !arrayType.toString().equals("(UndefinedType)")){
             System.out.println("Error:Line:" + arrayCall.line + ":Unsupported operand types for " + arrayCall.toString() +";");
+            hasError = true;
             return new UndefinedType();
         }
+
+        if(arrayType.toString().equals("(UndefinedType)"))
+            return new UndefinedType();
 
         return ((ArrayType)arrayType).getSingleType();
     }
@@ -693,6 +769,7 @@ public class TypeChecker implements Visitor<Type> {
         }
 
         System.out.println("Error:Line:" + notEquals.line + ":Unsupported operand types for " + notEquals.toString() +";");
+        hasError = true;
         isLvalue = false;
         return new UndefinedType();
     }
@@ -710,11 +787,15 @@ public class TypeChecker implements Visitor<Type> {
         catch (ItemNotFoundException e){
         }
 
-        if(inheritenceGraph.isParent(className,className))
+        if(inheritenceGraph.isParent(className,className)) {
             System.out.println("Error:Line:" + classDeclaration.getName().line + ":There is inheritence loop for class with name " + className + ";");
+            hasError = true;
+        }
 
-        if(parentName != null && !inheritenceGraph.doesGraphContainNode(parentName))
+        if(parentName != null && !inheritenceGraph.doesGraphContainNode(parentName)) {
             System.out.println("Error:Line:" + classDeclaration.getName().line + ":There is no parent class with name " + parentName + ";");
+            hasError = true;
+        }
 
         for(ClassMemberDeclaration mem:classDeclaration.getClassMembers()){
             mem.accept(this);
@@ -729,11 +810,15 @@ public class TypeChecker implements Visitor<Type> {
         String className = entryClassDeclaration.getName().getName();
         String parentName = entryClassDeclaration.getParentName().getName();
 
-        if(inheritenceGraph.isParent(className,className))
+        if(inheritenceGraph.isParent(className,className)) {
             System.out.println("Error:Line:" + entryClassDeclaration.getName().line + ":There is inheritence loop for class with name " + className + ";");
+            hasError = true;
+        }
 
-        if(parentName != null && !inheritenceGraph.doesGraphContainNode(parentName))
+        if(parentName != null && !inheritenceGraph.doesGraphContainNode(parentName)) {
             System.out.println("Error:Line:" + entryClassDeclaration.getName().line + ":There is no parent class with name " + parentName + ";");
+            hasError = true;
+        }
 
         try {
             ClassSymbolTableItem item = (ClassSymbolTableItem) SymbolTable.root.get("class_" + className);
@@ -742,11 +827,14 @@ public class TypeChecker implements Visitor<Type> {
 
             try {
                 MethodSymbolTableItem mainMethod = (MethodSymbolTableItem) SymbolTable.top().get("method_main");
-                if(mainMethod.getAccessModifier().equals(ACCESS_MODIFIER_PRIVATE) || (!mainMethod.getReturnType().toString().equals("(IntType)")) || (mainMethod.getArgumentsTypes().size() != 0))
+                if(mainMethod.getAccessModifier().equals(ACCESS_MODIFIER_PRIVATE) || (!mainMethod.getReturnType().toString().equals("(IntType)")) || (mainMethod.getArgumentsTypes().size() != 0)) {
                     System.out.println("Error:Line:" + entryClassDeclaration.getName().line + ":Main method definition is not mathced to the proper definition;");
+                    hasError = true;
+                }
             }
             catch (ItemNotFoundException e){
                 System.out.println("Error:Line:" + entryClassDeclaration.getName().line + ":There is no method main in entry class;");
+                hasError = true;
             }
         }
         catch (ItemNotFoundException e){
@@ -776,6 +864,7 @@ public class TypeChecker implements Visitor<Type> {
                 catch (ItemNotFoundException e){
                     System.out.println("Error:Line:"+parameterDeclaration.getIdentifier().line +":There is no class with name " + ((UserDefinedType) parameterDeclaration.getType()).getClassName() + ";");
                     parameterDeclaration.setType(new UndefinedType());
+                    hasError = true;
                 }
             }
             arg.setVarType(parameterDeclaration.getType());
@@ -800,6 +889,7 @@ public class TypeChecker implements Visitor<Type> {
             catch (ItemNotFoundException e){
                 System.out.println("Error:Line:" + methodDeclaration.getName().line + ":There is no class with name " + ((UserDefinedType) methodDeclaration.getReturnType()).getClassName() + ";");
                 methodDeclaration.setReturnType(new UndefinedType());
+                hasError = true;
             }
         }
 

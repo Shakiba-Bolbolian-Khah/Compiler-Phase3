@@ -14,5 +14,8 @@ public class ToorlaCompiler {
         nameAnalyzer.analyze();
         TypeChecker typeChecker = new TypeChecker(nameAnalyzer.getClassHierarchy());
         toorlaASTCode.accept(typeChecker);
+        if(!typeChecker.HasError()){
+            System.out.println("No error detected;");
+        }
     }
 }
