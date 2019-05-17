@@ -1,3 +1,4 @@
+
 package toorla.symbolTable;
 
 import toorla.symbolTable.exceptions.ItemAlreadyExistsException;
@@ -57,6 +58,22 @@ public class SymbolTable {
     public SymbolTableItem get(String key) throws ItemNotFoundException {
         Set<SymbolTable> visitedSymbolTables = new HashSet<>();
         SymbolTable currentSymbolTable = this;
+        return getSymbolTableItemInCurrentOrParents(key, visitedSymbolTables, currentSymbolTable);
+    }
+
+    public SymbolTableItem getInParentScopes(String key) throws ItemNotFoundException {
+        if (pre == null)
+            throw new ItemNotFoundException();
+        else
+        {
+            Set<SymbolTable> visitedSymbolTables = new HashSet<>();
+            visitedSymbolTables.add(this);
+            SymbolTable currentSymbolTable = this.pre;
+            return getSymbolTableItemInCurrentOrParents(key, visitedSymbolTables, currentSymbolTable);
+        }
+    }
+
+    private SymbolTableItem getSymbolTableItemInCurrentOrParents(String key, Set<SymbolTable> visitedSymbolTables, SymbolTable currentSymbolTable) throws ItemNotFoundException {
         do {
             visitedSymbolTables.add( currentSymbolTable );
             SymbolTableItem value = currentSymbolTable.items.get(key);
@@ -67,13 +84,6 @@ public class SymbolTable {
         } while( currentSymbolTable != null &&
                 !visitedSymbolTables.contains( currentSymbolTable ) );
         throw new ItemNotFoundException();
-    }
-
-    public SymbolTableItem getInParentScopes(String key) throws ItemNotFoundException {
-        if (pre == null)
-            throw new ItemNotFoundException();
-        else
-            return pre.get(key);
     }
 
     public SymbolTable getPreSymbolTable() {
