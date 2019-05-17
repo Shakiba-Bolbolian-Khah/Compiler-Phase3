@@ -5,4 +5,5 @@ public class IntType extends SingleType {
     public String toString() {
         return "(IntType)";
     }
+    public String typeName() { return "Int"; }
 }

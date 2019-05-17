@@ -5,4 +5,5 @@ public class StringType extends SingleType {
     public String toString() {
         return "(StringType)";
     }
+    public String typeName() { return "String"; }
 }

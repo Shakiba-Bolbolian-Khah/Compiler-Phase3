@@ -1,17 +1,22 @@
-entry class Sample2 :
-    function main() returns int :
-        var a = 2;
-        begin
-            var a = _a && true;
-            a = b || c && true;
-            var _a = false;
-            var b = _a && true;
-            var c = 1;
-            var d = 1;
-            ( c + d )++;
-            ( c + d )--;
-        end
-        return 0;
+entry class Sample2 inherits B :
+    private field data int;
+    function main() returns bool :
+        var array = new int[10];
+        data = array.length;
+        var d = (1+"2").c();
+        var x = new C["1223"];
+        var v = (1+"hello") + "bye";
+        var a = 2 + true;
+        var k = c(a);
+        2+"hello" = 5;
+        return 3;
+
+    end
+    function c() returns int:
     end
 
 end
+
+class B inherits Sample2:
+end
+

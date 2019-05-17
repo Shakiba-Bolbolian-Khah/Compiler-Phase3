@@ -4,8 +4,28 @@
     <list default="true" id="eceb69c8-8d81-41be-b4a6-ce6bad777064" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample.in" beforeDir="false" afterPath="$PROJECT_DIR$/sample.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toorla/symbolTable/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/symbolTable/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ToorlaCompiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ToorlaCompiler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/nameAnalyzer/NameAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/nameAnalyzer/NameAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/AnonymousType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/AnonymousType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/arrayType/ArrayType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/arrayType/ArrayType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/singleType/BoolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/singleType/BoolType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/singleType/IntType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/singleType/IntType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/singleType/StringType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/singleType/StringType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/singleType/UndefinedType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/singleType/UndefinedType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/types/singleType/UserDefinedType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/types/singleType/UserDefinedType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/utilities/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/utilities/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toorla/visitor/TypeChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toorla/visitor/TypeChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/nameAnalyzer/NameAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/nameAnalyzer/NameAnalyzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/symbolTable/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/symbolTable/SymbolTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/AnonymousType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/AnonymousType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/arrayType/ArrayType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/arrayType/ArrayType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/singleType/BoolType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/singleType/BoolType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/singleType/IntType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/singleType/IntType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/singleType/StringType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/singleType/StringType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/singleType/UndefinedType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/singleType/UndefinedType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/types/singleType/UserDefinedType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/types/singleType/UserDefinedType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toorla/utilities/graph/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/utilities/graph/Graph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/toorla/visitor/TypeChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/toorla/visitor/TypeChecker.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,66 +40,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/toorla/visitor/TypeChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="735" selection-start-line="735" selection-end-line="735" />
+            <state relative-caret-position="191">
+              <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8221#8222#0" expanded="true" />
-                <element signature="e#8248#8249#0" expanded="true" />
-                <element signature="e#33487#33488#0" expanded="true" />
-                <element signature="e#33514#33515#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/toorla/symbolTable/SymbolTable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
-              <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#608#609#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#676#677#0" expanded="true" />
-                <element signature="e#712#713#0" expanded="true" />
-                <element signature="e#921#922#0" expanded="true" />
-                <element signature="e#954#955#0" expanded="true" />
-                <element signature="e#1019#1020#0" expanded="true" />
-                <element signature="e#1045#1046#0" expanded="true" />
-                <element signature="e#2830#2831#0" expanded="true" />
-                <element signature="e#2856#2857#0" expanded="true" />
-                <element signature="e#2918#2919#0" expanded="true" />
-                <element signature="e#2951#2952#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/toorla/symbolTable/symbolTableItem/varItems/FieldSymbolTableItem.java">
+        <entry file="file://$PROJECT_DIR$/src/toorla/utilities/graph/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/toorla/ast/statement/localVarStats/LocalVarDef.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/UndefinedType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+            <state relative-caret-position="99">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2285#2286#0" expanded="true" />
+                <element signature="e#2349#2350#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,17 +66,66 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/IntType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="25" />
+            <state relative-caret-position="90">
+              <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/SingleType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/StringType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/BoolType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sample.in">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+            <state relative-caret-position="342">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/toorla/nameAnalyzer/NameCollectionPass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="317" selection-start-line="317" selection-end-line="317" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/toorla/types/arrayType/ArrayType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="25" column="73" selection-start-line="25" selection-start-column="73" selection-end-line="25" selection-end-column="73" />
+              <folding>
+                <element signature="e#467#468#0" expanded="true" />
+                <element signature="e#533#534#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ToorlaCompiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+            <state relative-caret-position="180">
+              <caret line="14" column="45" selection-start-line="14" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -137,6 +165,12 @@
       <find>singleType</find>
       <find>self</find>
       <find>methodCa</find>
+      <find>isP</find>
+      <find>UserDefinedType</find>
+      <find>toString</find>
+      <find>TODO</find>
+      <find>field</find>
+      <find>assign</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,17 +180,24 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/toorla/nameAnalyzer/ClassParentshipExtractorPass.java" />
-        <option value="$PROJECT_DIR$/src/toorla/types/singleType/UserDefinedType.java" />
         <option value="$PROJECT_DIR$/src/toorla/ast/declaration/classDecs/classMembersDecs/AccessModifier.java" />
-        <option value="$PROJECT_DIR$/src/toorla/utilities/graph/Graph.java" />
-        <option value="$PROJECT_DIR$/src/toorla/types/singleType/UndefinedType.java" />
         <option value="$PROJECT_DIR$/grammar/Toorla.g4" />
         <option value="$PROJECT_DIR$/src/toorla/symbolTable/symbolTableItem/varItems/FieldSymbolTableItem.java" />
         <option value="$PROJECT_DIR$/src/toorla/symbolTable/symbolTableItem/varItems/LocalVariableSymbolTableItem.java" />
-        <option value="$PROJECT_DIR$/src/toorla/visitor/TypeChecker.java" />
         <option value="$PROJECT_DIR$/src/ToorlaCompiler.java" />
-        <option value="$PROJECT_DIR$/sample.in" />
         <option value="$PROJECT_DIR$/src/toorla/symbolTable/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/toorla/nameAnalyzer/NameAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/toorla/utilities/graph/Graph.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/singleType/UndefinedType.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/Type.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/AnonymousType.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/singleType/BoolType.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/singleType/IntType.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/singleType/StringType.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/singleType/UserDefinedType.java" />
+        <option value="$PROJECT_DIR$/src/toorla/types/arrayType/ArrayType.java" />
+        <option value="$PROJECT_DIR$/src/toorla/visitor/TypeChecker.java" />
+        <option value="$PROJECT_DIR$/sample.in" />
       </list>
     </option>
   </component>
@@ -172,6 +213,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -207,14 +250,6 @@
               <item name="ph3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="toorla" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
-              <item name="expression" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ph3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ph3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="toorla" type="462c0819:PsiDirectoryNode" />
               <item name="symbolTable" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -222,14 +257,35 @@
               <item name="ph3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="toorla" type="462c0819:PsiDirectoryNode" />
-              <item name="visitor" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ph3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ph3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="toorla" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+              <item name="arrayType" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ph3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ph3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="toorla" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+              <item name="singleType" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ph3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ph3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="toorla" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -269,10 +325,10 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25235197" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.255119" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32963374" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32963374" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="ANTLR Preview" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
@@ -294,27 +350,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/AnonymousType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/StringType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toorla/nameAnalyzer/ReportingPass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3139">
@@ -322,24 +357,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/BoolType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toorla/ast/expression/Self.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/nameAnalyzer/NameCollectionPass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="314" column="2" lean-forward="true" selection-start-line="314" selection-start-column="2" selection-end-line="314" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -420,16 +441,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/nameAnalyzer/NameAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toorla/nameAnalyzer/ClassParentshipExtractorPass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-331">
@@ -445,13 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/UserDefinedType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -486,25 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/utilities/graph/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="34" column="70" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-            <element signature="e#1597#1598#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/arrayType/ArrayType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grammar/Toorla.g4">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -528,20 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/visitor/TypeChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="735" selection-start-line="735" selection-end-line="735" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8221#8222#0" expanded="true" />
-            <element signature="e#8248#8249#0" expanded="true" />
-            <element signature="e#33487#33488#0" expanded="true" />
-            <element signature="e#33514#33515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toorla/symbolTable/symbolTableItem/varItems/FieldSymbolTableItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -556,38 +527,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/UndefinedType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/IntType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample.in">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ToorlaCompiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toorla/symbolTable/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+        <state relative-caret-position="-450">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#608#609#0" expanded="true" />
@@ -603,6 +546,131 @@
             <element signature="e#2918#2919#0" expanded="true" />
             <element signature="e#2951#2952#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/nameAnalyzer/NameAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/Type.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/AnonymousType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/BoolType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/IntType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/SingleType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/StringType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/UndefinedType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/singleType/UserDefinedType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/utilities/graph/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2285#2286#0" expanded="true" />
+            <element signature="e#2349#2350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ToorlaCompiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="45" selection-start-line="14" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Toorla_provided.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/types/arrayType/ArrayType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="25" column="73" selection-start-line="25" selection-start-column="73" selection-end-line="25" selection-end-column="73" />
+          <folding>
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/nameAnalyzer/NameCollectionPass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="317" selection-start-line="317" selection-end-line="317" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toorla/visitor/TypeChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample.in">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -22,4 +22,6 @@ public class ArrayType extends Type {
     public String toString() {
         return "(ArrayType," + singleType.toString() + ")";
     }
+
+    public String typeName() { return "Array of " + singleType.typeName(); }
 }

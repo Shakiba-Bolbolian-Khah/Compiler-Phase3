@@ -26,7 +26,6 @@ public class NameAnalyzer {
         nameCheckingPass.analyze( program );
         classHierarchy = classParentshipExtractorPass.getResult();
         reportingPass.analyze( program );
-        program.accept( new NameTreePrinter() );
     }
 
     private void prepare() {

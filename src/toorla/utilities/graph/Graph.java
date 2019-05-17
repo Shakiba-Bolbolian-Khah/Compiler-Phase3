@@ -30,14 +30,23 @@ public class Graph <Node> {
             throw new NodeAlreadyExists();
         parentShipRelation.put( desired , new HashSet<>() );
     }
-    public boolean isParent(String child, String parent) {
+
+
+    public boolean isParent(String child, String parent,Map<String,Boolean> visited) {
         try {
             Collection<Node> parents = getParentsOfNode((Node) child);
+            Object[] par = parents.toArray();
 
-            if(parents.contains(parent))
-                return  true;
-            else
+
+            if(parents.size() == 0)
+                return  false;
+            if(visited.containsKey(child))
                 return false;
+            visited.put(child,true);
+            if (parents.contains(parent))
+                return  true;
+
+            return  isParent((String) par[0],parent,visited);
 
         }
         catch (GraphDoesNotContainNodeException e){

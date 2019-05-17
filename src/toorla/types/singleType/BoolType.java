@@ -5,4 +5,5 @@ public class BoolType extends SingleType {
     public String toString() {
         return "(BoolType)";
     }
+    public String typeName() { return "BoolType"; }
 }

@@ -9,4 +9,5 @@ public class UndefinedType extends Type {
     public String toString() {
         return "(UndefinedType)";
     }
+    public String typeName() { return "Undefined"; }
 }

@@ -5,4 +5,5 @@ public class AnonymousType extends Type {
     public String toString() {
         return "(Anonymous)";
     }
+    public String typeName() { return "Anonymous"; }
 }
