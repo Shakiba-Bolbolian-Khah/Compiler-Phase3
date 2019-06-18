@@ -1,22 +1,19 @@
-entry class Sample2 inherits B :
-    private field data int;
-    function main() returns bool :
-        var array = new int[10];
-        data = array.length;
-        var d = (1+"2").c();
-        var x = new C["1223"];
-        var v = (1+"hello") + "bye";
-        var a = 2 + true;
-        var k = c(a);
-        2+"hello" = 5;
-        return 3;
+//check assign for undefined //
 
+//field call self.field lvalue//
+
+//be length rvalue hast//
+
+//name of classes return type//
+
+//bool as instance of field call
+//165 new stack
+
+entry class MainClass:
+    function main() returns int:
+        var mainClassArray = new MainClass[544];
+        (mainClassArray[1].array[2].array.length)++;
+        return 0;
     end
-    function c() returns int:
-    end
-
+    public field array MainClass[];
 end
-
-class B inherits Sample2:
-end
-

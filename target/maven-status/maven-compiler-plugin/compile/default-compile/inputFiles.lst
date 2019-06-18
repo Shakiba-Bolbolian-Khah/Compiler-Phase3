@@ -63,6 +63,7 @@
 /home/hosna/IdeaProjects/ph3/src/toorla/symbolTable/symbolTableItem/varItems/FieldSymbolTableItem.java
 /home/hosna/IdeaProjects/ph3/src/toorla/nameAnalyzer/ClassParentshipExtractorPass.java
 /home/hosna/IdeaProjects/ph3/src/toorla/ast/expression/unaryExpression/Not.java
+/home/hosna/IdeaProjects/ph3/src/toorla/utilities/graph/Stack.java
 /home/hosna/IdeaProjects/ph3/src/toorla/nameAnalyzer/compileErrorException/ClassRedefinitionException.java
 /home/hosna/IdeaProjects/ph3/src/toorla/ast/statement/IncStatement.java
 /home/hosna/IdeaProjects/ph3/src/toorla/symbolTable/exceptions/ItemNotFoundException.java

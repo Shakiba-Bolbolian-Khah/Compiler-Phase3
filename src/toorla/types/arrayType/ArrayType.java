@@ -2,6 +2,7 @@ package toorla.types.arrayType;
 
 import toorla.types.Type;
 import toorla.types.singleType.SingleType;
+import toorla.types.singleType.UserDefinedType;
 
 public class ArrayType extends Type {
     private SingleType singleType;
@@ -23,5 +24,9 @@ public class ArrayType extends Type {
         return "(ArrayType," + singleType.toString() + ")";
     }
 
-    public String typeName() { return "Array of " + singleType.typeName(); }
+    public String typeName() {
+        if(singleType.toString().startsWith("(UserDefined")){
+            return "Array of "+((UserDefinedType) singleType).getClassName();
+        }
+        return "Array of " + singleType.typeName(); }
 }

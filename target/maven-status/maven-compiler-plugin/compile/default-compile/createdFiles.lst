@@ -1,6 +1,7 @@
 toorla/ast/expression/binaryExpression/GreaterThan.class
 ToorlaParser$ExpressionOrTempContext.class
 toorla/ast/declaration/classDecs/classMembersDecs/FieldDeclaration.class
+toorla/utilities/graph/Stack.class
 ToorlaParser$ExpressionUnaryContext.class
 toorla/ast/statement/Statement.class
 ToorlaParser$MethodDeclarationContext.class
